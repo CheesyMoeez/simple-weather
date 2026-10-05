@@ -1,0 +1,112 @@
+/* CheesyMoeez */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lato", serif;
+  background-color: hsl(0, 0%, 90%);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("assets/images/backgrounds/background.svg");
+  background-size: cover;
+}
+
+h1,
+p {
+  color: hsl(0, 0%, 100%, 0.95);
+}
+
+#simpleWeatherText {
+  text-align: center;
+  padding: 0px 0px 8px 0px;
+}
+
+.weather {
+  margin: 16px 0;
+  padding: 48px 40px 48px 40px;
+
+  border: 1px solid hsla(0, 0%, 90%, 0.5);
+  border-radius: 32px;
+
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(2048px) saturate(2.5) brightness(0.9);
+}
+
+.weather-city-form {
+}
+
+.city-input {
+  font-size: 20px;
+  text-align: center;
+
+  width: calc(256px + 16px);
+  height: calc(32px + 8px);
+
+  background-color: hsl(0, 0%, 95%);
+
+  border: 1px solid hsla(0, 0%, 90%, 0.5);
+  border-radius: 32px;
+
+  box-shadow: 0px 2.5px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+button[type="submit"] {
+  font-size: 20px;
+
+  height: calc(32px + 8px);
+  width: calc(32px + 8px);
+
+  background-color: hsl(0, 0%, 95%);
+
+  border: 1px solid hsla(0, 0%, 90%, 0.5);
+  border-radius: 32px;
+
+  box-shadow: 0px 2.5px 10px 0px rgba(0, 0, 0, 0.15);
+
+  cursor: pointer;
+}
+
+.weather-details-card {
+  color: white;
+
+  margin-top: 32px;
+  margin-inline: auto;
+
+  width: 256px;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.temperature {
+  font-size: 120px;
+  font-weight: 900;
+}
+
+.humidity {
+  font-style: italic;
+  font-size: 18px;
+}
+
+.description {
+  font-style: italic;
+  font-size: 32px;
+}
+
+.emoji {
+  font-size: calc(128px + 8px);
+}

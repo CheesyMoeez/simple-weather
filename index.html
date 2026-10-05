@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="CheesyMoeez">
+    <meta name="description" content="A simple weather app built with vanilla HTML, CSS, and JS using the OpenWeatherMap API (No AI/vibe coding used).">
+    <title>Simple Weather</title>
+    <link rel="stylesheet" href="index.css" />
+    <!-- Lato font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Search icon from Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0&icon_names=search"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="weather" onclick="focusOnInput()">
+        <h1 id="simpleWeatherText">Simple Weather</h1>
+        <form action="" class="weather-city-form">
+          <input
+            type="text"
+            id="city"
+            name="city"
+            class="city-input"
+            placeholder="City"
+          />
+          <button id="submitButton" type="submit">
+            <span class="material-symbols-outlined"> search </span>
+          </button>
+        </form>
+        <div id="hideCard" style="display: none">
+          <div class="weather-details-card">
+            <h1 class="name"></h1>
+            <p class="temperature"></p>
+            <p class="humidity"></p>
+            <p class="description"></p>
+            <p class="emoji"></p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
