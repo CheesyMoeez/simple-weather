@@ -36,6 +36,7 @@ weatherCityForm.addEventListener("submit", async (event) => {
   if (city) {
     try {
       const weatherData = await getWeatherData(lat, lon);
+      console.log(weatherData);
       displayWeatherData(weatherData);
     } catch (error) {
       console.log(error);
@@ -61,18 +62,30 @@ async function getWeatherData(lat, lon) {
 
 // Display the weather data
 function displayWeatherData(data) {
+
+  cityInput.value = "";
+
   const hideCard = document.getElementById("hideCard");
   hideCard.style.display = "inline";
 
   const {
     name: city,
+    sys: {country},
     main: { temp: temperature, humidity },
     weather: [{ id, description }],
   } = data;
 
+  console.log(country);
+
+  const flagEmoji = getFlagEmoji(country);
+
+  console.log(flagEmoji);
+
   temperatureInCelsius = Math.round(temperature - 273.15);
 
-  document.getElementsByClassName("name")[0].innerHTML = city;
+  document.getElementsByClassName("name")[0].innerHTML = city + " " + flagEmoji;
+  document.getElementsByClassName("name")[0].setAttribute("title", country);
+
   document.getElementsByClassName("temperature")[0].innerHTML =
     `${temperatureInCelsius}°C`;
   document.getElementsByClassName("humidity")[0].innerHTML =
@@ -80,6 +93,16 @@ function displayWeatherData(data) {
   document.getElementsByClassName("description")[0].innerHTML =
     description.charAt(0).toUpperCase() + description.slice(1);
   document.getElementsByClassName("emoji")[0].innerHTML = getWeatherEmoji(id);
+}
+
+// Get the flag of the country using the country code provided by the weather API
+// Code from: https://dev.to/jorik/country-code-to-flag-emoji-a21
+function getFlagEmoji(countryCode) {
+  const codePoints = countryCode
+  .toUpperCase()
+  .split("")
+  .map(char => 127397 + char.charCodeAt());
+  return String.fromCodePoint(...codePoints);
 }
 
 // Get the appropriate weather emoji based on the id provided
