@@ -4,6 +4,9 @@ const weather = document.getElementsByClassName("weather")[0];
 const weatherCityForm = document.querySelector(".weather-city-form");
 const cityInput = document.querySelector(".city-input");
 const card = document.querySelector(".weather-details-card");
+const hideCard = document.querySelector("#hideCard");
+
+const themePicker = document.querySelector("#themePicker");
 
 // Insert your Openweathermap API key here
 const apiKey = "";
@@ -13,13 +16,11 @@ cityInput.addEventListener("keyup", function (event) {
   event.preventDefault();
   if (event.keyCode === 13) {
     document.getElementById("submitButton").click();
+    hideCard.style.display = "none";
   }
 });
 
-// When clicking anywhere on the card, focus on the form input
-function focusOnInput() {
-  cityInput.focus();
-}
+const loader = document.querySelector("#loading");
 
 // Get and validate the city
 weatherCityForm.addEventListener("submit", async (event) => {
@@ -76,7 +77,8 @@ function displayWeatherData(data) {
     `${temperatureInCelsius}°C`;
   document.getElementsByClassName("humidity")[0].innerHTML =
     `Humidity: ${humidity}%`;
-  document.getElementsByClassName("description")[0].innerHTML = description;
+  document.getElementsByClassName("description")[0].innerHTML =
+    description.charAt(0).toUpperCase() + description.slice(1);
   document.getElementsByClassName("emoji")[0].innerHTML = getWeatherEmoji(id);
 }
 

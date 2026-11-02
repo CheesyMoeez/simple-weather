@@ -13,13 +13,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("assets/images/backgrounds/background.svg");
+  background-image: url("assets/images/backgrounds/background-2.svg");
   background-size: cover;
 }
 
 h1,
 p {
-  color: hsl(0, 0%, 100%, 0.95);
+  color: hsl(0, 0%, 100%, 1);
+  filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.2));
 }
 
 #simpleWeatherText {
@@ -34,19 +35,22 @@ p {
   border: 1px solid hsla(0, 0%, 90%, 0.5);
   border-radius: 32px;
 
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(2048px) saturate(2.5) brightness(0.9);
-}
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2048px) saturate(3) brightness(0.9);
 
-.weather-city-form {
+  /* background-color: #86a8d9; */
 }
 
 .city-input {
+  color: #262626;
+
   font-size: 20px;
   text-align: center;
 
   width: calc(256px + 16px);
   height: calc(32px + 8px);
+
+  transition: 100ms ease-in-out;
 
   background-color: hsl(0, 0%, 95%);
 
@@ -56,11 +60,19 @@ p {
   box-shadow: 0px 2.5px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
+.city-input:hover {
+  scale: 1.025;
+}
+
 button[type="submit"] {
   font-size: 20px;
 
   height: calc(32px + 8px);
   width: calc(32px + 8px);
+
+  margin: 0 4px;
+
+  transition: 100ms ease-in-out;
 
   background-color: hsl(0, 0%, 95%);
 
@@ -70,6 +82,10 @@ button[type="submit"] {
   box-shadow: 0px 2.5px 10px 0px rgba(0, 0, 0, 0.15);
 
   cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  scale: 1.125;
 }
 
 .weather-details-card {
@@ -84,12 +100,24 @@ button[type="submit"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
 }
 
 .name {
-  font-size: 30px;
+  font-size: 18px;
   font-weight: bold;
+
+  padding: 4px 12px;
+
+  border: 1px solid hsla(0, 0%, 90%, 0.5);
+  border-radius: 32px;
+
+  box-shadow: 0px 2.5px 10px 0px rgba(0, 0, 0, 0.15);
+
+  cursor: pointer;
+}
+
+.name:hover {
 }
 
 .temperature {
@@ -103,10 +131,21 @@ button[type="submit"] {
 }
 
 .description {
-  font-style: italic;
   font-size: 32px;
 }
 
 .emoji {
   font-size: calc(128px + 8px);
+}
+
+#poweredBy {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  margin: 16px;
+}
+
+#poweredBy > a > img {
+  width: 128px;
 }

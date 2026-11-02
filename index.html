@@ -7,6 +7,7 @@
     <meta name="description" content="A simple weather app built with vanilla HTML, CSS, and JS using the OpenWeatherMap API (No AI/vibe coding used).">
     <title>Simple Weather</title>
     <link rel="stylesheet" href="index.css" />
+
     <!-- Lato font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+
     <!-- Search icon from Google Fonts -->
     <link
       rel="stylesheet"
@@ -22,7 +24,7 @@
   </head>
   <body>
     <main>
-      <div class="weather" onclick="focusOnInput()">
+      <div class="weather">
         <h1 id="simpleWeatherText">Simple Weather</h1>
         <form action="" class="weather-city-form">
           <input
@@ -41,10 +43,15 @@
             <h1 class="name"></h1>
             <p class="temperature"></p>
             <p class="humidity"></p>
-            <p class="description"></p>
             <p class="emoji"></p>
+            <p class="description"></p>
           </div>
         </div>
+      </div>
+      <div id="poweredBy">
+        <p>Powered by: </p>
+        <a href="https://openweathermap.org/" target="_blank" title="openweathermap.org">
+          <img src="assets/images/logos/openweather-logo.png" alt="OpenWeather Logo">
       </div>
     </main>
     <script src="index.js"></script>
