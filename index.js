@@ -62,7 +62,6 @@ async function getWeatherData(lat, lon) {
 
 // Display the weather data
 function displayWeatherData(data) {
-
   cityInput.value = "";
 
   const hideCard = document.getElementById("hideCard");
@@ -70,43 +69,53 @@ function displayWeatherData(data) {
 
   const {
     name: city,
-    sys: {country},
-    main: { temp: temperature, humidity },
+    sys: { country },
+    main: { temp: temperature, humidity, feels_like: feelsLike },
     weather: [{ id, description }],
+    wind: { speed: windSpeed, deg: windAngle },
   } = data;
-
-  console.log(country);
 
   const flagEmoji = getFlagEmoji(country);
 
   console.log(flagEmoji);
 
   temperatureInCelsius = Math.round(temperature - 273.15);
+  feelsLikeinCelsius = farenheitToCelsius(feelsLike);
+  windSpeedInKMh = Math.round(windSpeed * 1.60934);
 
   document.getElementsByClassName("name")[0].innerHTML = city + " " + flagEmoji;
   document.getElementsByClassName("name")[0].setAttribute("title", country);
 
   document.getElementsByClassName("temperature")[0].innerHTML =
     `${temperatureInCelsius}°C`;
+  document.getElementsByClassName("feels-like")[0].innerHTML =
+    `Feels like: ${feelsLikeinCelsius} °C`;
   document.getElementsByClassName("humidity")[0].innerHTML =
     `Humidity: ${humidity}%`;
+  document.getElementsByClassName("wind-speed")[0].innerHTML =
+    `Windspeed: ${windSpeedInKMh} Km/h`;
   document.getElementsByClassName("description")[0].innerHTML =
     description.charAt(0).toUpperCase() + description.slice(1);
-  document.getElementsByClassName("emoji")[0].innerHTML = getWeatherEmoji(id);
+  document.getElementsByClassName("icon")[0].setAttribute("src", getWeatherIcon(id));
+}
+
+// Convert farenheit to celsius
+function farenheitToCelsius(temperatureInFarenheit) {
+  return Math.round(temperatureInFarenheit - 273.15);
 }
 
 // Get the flag of the country using the country code provided by the weather API
 // Code from: https://dev.to/jorik/country-code-to-flag-emoji-a21
 function getFlagEmoji(countryCode) {
   const codePoints = countryCode
-  .toUpperCase()
-  .split("")
-  .map(char => 127397 + char.charCodeAt());
+    .toUpperCase()
+    .split("")
+    .map((char) => 127397 + char.charCodeAt());
   return String.fromCodePoint(...codePoints);
 }
 
 // Get the appropriate weather emoji based on the id provided
-function getWeatherEmoji(weatherId) {
+function getWeatherIcon(weatherId) {
   let emoji;
 
   if (weatherId >= 200 && weatherId <= 299) {
@@ -122,7 +131,8 @@ function getWeatherEmoji(weatherId) {
   } else if (weatherId === 800) {
     emoji = "☀️";
   } else if (weatherId >= 801 && weatherId <= 899) {
-    emoji = "☁️";
+    // emoji = "☁️";
+    emoji = `cloud.svg`;
   } else {
     emoji = "❌";
   }

@@ -7,13 +7,13 @@
 
 body {
   font-family: "Lato", serif;
-  background-color: hsl(0, 0%, 90%);
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("assets/images/backgrounds/background-2.svg");
+  /* background-image: url("assets/images/backgrounds/background-2.svg"); */
+  background-color: #262626;
   background-size: cover;
 }
 
@@ -36,7 +36,7 @@ p {
   border-radius: 32px;
 
   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(2048px) saturate(3) brightness(0.9);
+  backdrop-filter: blur(2048px) saturate(5) brightness(0.85);
 
   /* background-color: #86a8d9; */
 }
@@ -97,22 +97,17 @@ button[type="submit"]:hover {
   width: 256px;
   height: fit-content;
 
-  display: flex;
+  text-align: center;
+
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 6px; */
 }
 
 .name {
   font-size: 18px;
   font-weight: bold;
-
-  padding: 4px 12px;
-
-  border: 1px solid hsla(0, 0%, 90%, 0.5);
-  border-radius: 32px;
-
-  box-shadow: 0px 2.5px 10px 0px rgba(0, 0, 0, 0.15);
 
   cursor: pointer;
 }
@@ -121,21 +116,24 @@ button[type="submit"]:hover {
 }
 
 .temperature {
-  font-size: 120px;
+  font-size: 128px;
   font-weight: 900;
 }
 
-.humidity {
+.feels-like {
   font-style: italic;
-  font-size: 18px;
+  font-size: 23px;
+}
+
+.humidity {
 }
 
 .description {
   font-size: 32px;
 }
 
-.emoji {
-  font-size: calc(128px + 8px);
+.icon {
+  width: 6rem;
 }
 
 #poweredBy {
